@@ -6,10 +6,16 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './modules/shared/shared.module';
 import { MaterialModule } from './modules/shared/material.module';
+import { FullComponent } from './layouts/full/full.component';
+import { HeaderComponent } from './layouts/header/header.component';
+import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FullComponent,
+    HeaderComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

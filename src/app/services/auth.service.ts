@@ -10,7 +10,7 @@ export class AuthService {
   constructor(private httpClient: HttpClient) { }
 
   signup(data: any) {
-    return this.httpClient.post(this.url + '/auth', data, {
+    return this.httpClient.post(this.url + '/auth/signup', data, {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     })
   }

@@ -8,8 +8,9 @@ import { MatSnackBar } from '@angular/material/snack-bar'
 export class SnackbarService {
 
   constructor(private snackbar: MatSnackBar) { }
+
   openSnackBar(message: string, action: string) {
-    const snackbar_color = (action == 'error') ? 'black-snackbar' : 'green-snackbar';
+    const snackbar_color = (action === 'error') ? 'black-snackbar' : 'green-snackbar';
     this.snackbar.open(message, '', {
       horizontalPosition: 'center',
       verticalPosition: 'top',

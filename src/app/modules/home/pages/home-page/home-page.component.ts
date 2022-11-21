@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { LoginComponent } from 'src/app/components/login/login.component';
 import { SignupComponent } from 'src/app/components/signup/signup.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home-page',
@@ -10,9 +12,25 @@ import { SignupComponent } from 'src/app/components/signup/signup.component';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
+  constructor(
+    private dialog: MatDialog,
+    private router: Router,
+    private authService: AuthService,
+  ) { }
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('token')) {
+      this.authService.checkToken().subscribe(
+        {
+          next: () => {
+            this.router.navigate(['/managements/dashboard'])
+          },
+          error: () => {
+            sessionStorage.clear()
+          }
+        }
+      )
+    }
   }
   signupAction() {
     const dialogConfig = new MatDialogConfig();

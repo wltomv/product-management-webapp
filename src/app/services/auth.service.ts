@@ -20,4 +20,13 @@ export class AuthService {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     })
   }
+
+  checkToken() {
+    return this.httpClient.get(`${this.url}/auth/checkToken`)
+  }
+
+  public isAuthenticated(): boolean {
+    const token = sessionStorage.getItem('token');
+    return token ? true : false;
+  }
 }

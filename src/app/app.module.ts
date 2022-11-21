@@ -12,7 +12,8 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './components/signup/signup.component';
-import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, PB_DIRECTION } from 'ngx-ui-loader'
+import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, PB_DIRECTION } from 'ngx-ui-loader';
+import { LoginComponent } from './components/login/login.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: "Loading...",
@@ -32,7 +33,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     FullComponent,
     HeaderComponent,
     SidebarComponent,
-    SignupComponent
+    SignupComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

@@ -36,7 +36,7 @@
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>Passoword</mat-label>
+                <mat-label>Password</mat-label>
                 <input matInput formControlName="password" required [type]="hide ? 'password' : 'text'">
                 <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 <mat-error *ngIf="signupForm.controls.password.touched && signupForm.controls.password.invalid">

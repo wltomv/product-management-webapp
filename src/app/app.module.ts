@@ -15,6 +15,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, PB_DIRECTION } from 'ngx-ui-loader';
 import { LoginComponent } from './components/login/login.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { Menu } from './constants/menu-items';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: "Loading...",
@@ -49,6 +50,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
   ],
   providers: [
+    Menu,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

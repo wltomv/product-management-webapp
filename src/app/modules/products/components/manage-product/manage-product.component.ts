@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { ConfirmationDialogComponent } from 'src/app/components/confirmation-dialog/confirmation-dialog.component';
 import { GlobalConstants } from 'src/app/modules/shared/global-constants';
 import { ProductService } from 'src/app/services/product.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
+import { ProductComponent } from '../product/product.component';
 
 @Component({
   selector: 'app-manage-product',
@@ -51,42 +53,89 @@ export class ManageProductComponent implements OnInit {
   }
 
   handleAddAction() {
-    // const dialogConfig = new MatDialogConfig();
-    // dialogConfig.data = {
-    //   action: 'Add'
-    // }
-    // dialogConfig.width = '850px';
-    // const dialogRef = this.dialog.open(CategoryComponent, dialogConfig);
-    // this.router.events.subscribe({
-    //   next: () => {
-    //     dialogRef.close();
-    //   }
-    // });
-    // const sub = dialogRef.componentInstance.onAddCategory.subscribe((response) => {
-    //   this.tableData();
-    // })
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      action: 'Add'
+    }
+    dialogConfig.width = '850px';
+    const dialogRef = this.dialog.open(ProductComponent, dialogConfig);
+    this.router.events.subscribe({
+      next: () => {
+        dialogRef.close();
+      }
+    });
+    const sub = dialogRef.componentInstance.onAddProduct.subscribe((response) => {
+      this.tableData();
+    })
   }
 
-  handleEditAction(value: any) {
-    // const dialogConfig = new MatDialogConfig();
-    // dialogConfig.data = {
-    //   action: 'Edit',
-    //   data: value
-    // }
-    // dialogConfig.width = '850px';
-    // const dialogRef = this.dialog.open(CategoryComponent, dialogConfig);
-    // this.router.events.subscribe({
-    //   next: () => {
-    //     dialogRef.close();
-    //   }
-    // });
-    // const sub = dialogRef.componentInstance.onEditCategory.subscribe((response) => {
-    //   this.tableData();
-    // })
+  handleEditAction(values: any) {
+    const dialogConfig = new MatDialogConfig();
+    console.log(values)
+    dialogConfig.data = {
+      action: 'Edit',
+      data: values
+    }
+    dialogConfig.width = '850px';
+    const dialogRef = this.dialog.open(ProductComponent, dialogConfig);
+    this.router.events.subscribe({
+      next: () => {
+        dialogRef.close();
+      }
+    });
+    const sub = dialogRef.componentInstance.onEditProduct.subscribe((response) => {
+      this.tableData();
+    })
   }
 
-  handleDeleteAction(value: any) {
-
+  handleDeleteAction(values: any) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      message: `delete ${values.product} product`
+    };
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+    const sub = dialogRef.componentInstance.onEmitStatusChange.subscribe(response => {
+      this.ngxService.start();
+      this.deleteProduct(values.id);
+      dialogRef.close();
+    })
   }
-  onChange(status: any, id: any) { }
+
+  deleteProduct(id: any) {
+    this.productService.delete(id).subscribe({
+      next: (response: any) => {
+
+        this.tableData();
+        this.responseMessage = response?.message;
+        this.snackbarService.openSnackBar(this.responseMessage, "success");
+      },
+      error: (error: any) => {
+        this.ngxService.stop();
+        this.responseMessage = error.error?.message ? error.error?.message : GlobalConstants.genericError
+        this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.error);
+      }
+    })
+  }
+
+  onChange(status: any, id: any) {
+    let data = {
+      status,
+      id: id
+    }
+    this.productService.updateStatus(data).subscribe(
+      {
+        next: (response: any) => {
+          this.ngxService.stop();
+          this.responseMessage = response?.message;
+          this.snackbarService.openSnackBar(this.responseMessage, 'success');
+        },
+        error: (error: any) => {
+          this.ngxService.stop();
+          this.responseMessage = error.error?.message ? error.error?.message : GlobalConstants.genericError
+          this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.error);
+        }
+      }
+
+    )
+  }
 }

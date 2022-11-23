@@ -10,6 +10,10 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
+  getProducts() {
+    return this.httpClient.get(`${this.url}/product`);
+  }
+
   add(data: any) {
     return this.httpClient.post(`${this.url}/product`, data, {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
@@ -17,22 +21,19 @@ export class ProductService {
   }
 
   update(data: any) {
-    return this.httpClient.patch(`${this.url}/product/update`, data, {
+    return this.httpClient.put(`${this.url}/product/update`, data, {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     })
   }
-  getProducts() {
-    return this.httpClient.get(`${this.url}/product`);
-  }
 
-  updateStatus(id: any) {
-    return this.httpClient.patch(`${this.url}/${id}`, {
+  updateStatus(data: any) {
+    return this.httpClient.patch(`${this.url}/product/updateStatus`, data, {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     })
   }
 
   delete(id: any) {
-    return this.httpClient.patch(`${this.url}/${id}`, {
+    return this.httpClient.delete(`${this.url}/product/${id}`, {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     })
   }

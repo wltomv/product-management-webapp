@@ -5,12 +5,14 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { ManageCategoryComponent } from './components/manage-category/manage-category.component';
 import { CategoryComponent } from './components/category/category.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ManageProductComponent } from './components/manage-product/manage-product.component';
 
 
 @NgModule({
   declarations: [
     ManageCategoryComponent,
-    CategoryComponent
+    CategoryComponent,
+    ManageProductComponent
   ],
   imports: [
     CommonModule,

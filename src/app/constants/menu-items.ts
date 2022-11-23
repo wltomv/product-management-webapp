@@ -12,10 +12,17 @@ export class Menu {
             icon: 'dashboard',
             role: ''
         },
+
         {
             state: "products\/category",
             name: 'Manage Category',
             icon: 'category',
+            role: 'admin'
+        },
+        {
+            state: "products",
+            name: 'Manage Product',
+            icon: 'inventory',
             role: 'admin'
         }
     ]

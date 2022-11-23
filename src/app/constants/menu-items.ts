@@ -14,7 +14,7 @@ export class Menu {
         },
 
         {
-            state: "products\/category",
+            state: "categories",
             name: 'Manage Category',
             icon: 'category',
             role: 'admin'

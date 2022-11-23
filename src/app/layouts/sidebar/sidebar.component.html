@@ -2,7 +2,7 @@
     <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getMenuItem()" routerLinkActive="Selected"
         group="{{menuitem.state}}">
         <!-- TODO role verification -->
-        <a appAccordionToggle [routerLink]="['/managements/',menuitem.state]">
+        <a appAccordionToggle [routerLink]="['/managements/'+ menuitem.state]">
             <mat-icon>{{menuitem.icon}}</mat-icon>
             <span>{{menuitem.name}}</span>
             <span> </span>

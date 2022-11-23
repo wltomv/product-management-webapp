@@ -51,11 +51,6 @@ export class LoginComponent implements OnInit {
         error: error => {
           this.ngxService.stop();
           this.responseMessage = error.error?.message ? error.error?.message : GlobalConstants.genericError
-          // if (error.error?.message) {
-          //   this.responseMessage = error.error?.message;
-          // } else {
-          //   this.responseMessage = GlobalConstants.genericError;
-          // }
           this.snackBarService.openSnackBar(this.responseMessage, GlobalConstants.error);
         },
         complete: () => this.router.navigate(['/managements/dashboard'])

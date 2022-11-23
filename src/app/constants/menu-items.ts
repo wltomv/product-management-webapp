@@ -11,6 +11,12 @@ export class Menu {
             name: 'Dashboard',
             icon: 'dashboard',
             role: ''
+        },
+        {
+            state: "products\/category",
+            name: 'Manage Category',
+            icon: 'category',
+            role: 'admin'
         }
     ]
     getMenuItem(): MenuItem[] {

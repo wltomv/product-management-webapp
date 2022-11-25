@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         next: (response: any) => {
           this.ngxService.stop();
           this.dialogRef.close();
-          sessionStorage.setItem('token', response.token)
+          localStorage.setItem('token', response.token)
         },
         error: error => {
           this.ngxService.stop();

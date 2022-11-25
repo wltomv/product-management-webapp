@@ -10,7 +10,7 @@ import { Menu } from 'src/app/constants/menu-items';
 })
 export class SidebarComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
-  token: any = sessionStorage.getItem('token');
+  token: any = localStorage.getItem('token');
   tokenPayload: any;
 
   private _mobileQueryListener: () => void;

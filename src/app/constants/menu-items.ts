@@ -24,6 +24,12 @@ export class Menu {
             name: 'Manage Product',
             icon: 'inventory',
             role: 'admin'
+        },
+        {
+            state: "sale",
+            name: 'Manage Sale',
+            icon: 'list_alt',
+            role: 'admin'
         }
     ]
     getMenuItem(): MenuItem[] {

@@ -1,0 +1,31 @@
+.float-right {
+    float: right;
+}
+
+mat-card {
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+}
+
+mat-form-field {
+    margin-left: 5px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media(max-width:500px) {
+    .row {
+        flex-wrap: wrap;
+    }
+}

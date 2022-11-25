@@ -14,6 +14,14 @@ export class ProductService {
     return this.httpClient.get(`${this.url}/product`);
   }
 
+  getProductsByCategory(id: any) {
+    return this.httpClient.get(`${this.url}/product/category/${id}`)
+  }
+
+  getProductById(id: any) {
+    return this.httpClient.get(`${this.url}/product/${id}`)
+  }
+
   add(data: any) {
     return this.httpClient.post(`${this.url}/product`, data, {
       headers: new HttpHeaders().set('Content-Type', 'application/json')

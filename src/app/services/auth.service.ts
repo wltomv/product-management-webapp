@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   public isAuthenticated(): boolean {
-    const token = sessionStorage.getItem('token');
+    const token = localStorage.getItem('token');
     return token ? true : false;
   }
 }

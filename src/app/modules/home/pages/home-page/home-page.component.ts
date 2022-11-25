@@ -19,14 +19,14 @@ export class HomePageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('token')) {
+    if (localStorage.getItem('token')) {
       this.authService.checkToken().subscribe(
         {
           next: () => {
             this.router.navigate(['/managements/dashboard'])
           },
           error: () => {
-            sessionStorage.clear()
+            localStorage.clear()
           }
         }
       )

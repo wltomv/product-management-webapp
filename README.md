@@ -41,6 +41,7 @@ https://user-images.githubusercontent.com/58500864/223000886-ffb0e927-9701-463e-
 <br/>Update
 
 https://user-images.githubusercontent.com/58500864/223000959-8c10596e-ffcf-48bd-96a8-7c02720a38fc.mov  
+
 <br/>  
 Delete
 
@@ -52,7 +53,10 @@ Deactivation
 https://user-images.githubusercontent.com/58500864/223001128-598e35fe-70df-4204-8496-27b7ee575e39.mov
 
 
+</br>
+Sale
 
+<p align="center"><img src="https://user-images.githubusercontent.com/58500864/223004984-6056b65b-0600-4c6d-b09a-d23603095b81.gif"/></p>
 
 
 
